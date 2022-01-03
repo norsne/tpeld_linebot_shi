@@ -29,29 +29,23 @@ bot.on('message', function (event) {
             users[uid].name=profile.displayName;
         }
         var msgtext = event.message.text;
-        if (userConfig.uid){
-            if (userConfig.uid <= Date.now()){
-                switch (msgtext){
-                    case '你好':
-                        sendMessage(event, '你好，之後也請多多指教了。');
-                        break;
-                    case '談鬼俱樂部':
-                        replyMsg.push('我對談鬼俱樂部知道的不多\n或許是因為我的經歷，呃，比起說故事的人更像參與者。');
-                        sendMessage(event, replyMsg);
-                        break;
-                    case '到此為止':
-                        sendMessage(event, '好的，我先暫停講話。');
-                        userConfig[uid] = evnet.timestamp+180;
-                        break;
-                    case '你還好嗎':
-                        sendMessage(event, '我很好。\n謝謝你關心。');
-                        break;
-                }
-            }
-            else{
-                sendMessage(event, '我正在忙。');
-            }
+        switch (msgtext){
+            case '你好':
+                sendMessage(event, '你好，之後也請多多指教了。');
+                break;
+            case '談鬼俱樂部':
+                replyMsg.push('我對談鬼俱樂部知道的不多\n或許是因為我的經歷，呃，比起說故事的人更像參與者。');
+                sendMessage(event, replyMsg);
+                break;
+            case '到此為止':
+                sendMessage(event, '好的，我先暫停講話。');
+                userConfig[uid] = evnet.timestamp+180;
+                break;
+            case '你還好嗎':
+                sendMessage(event, '我很好。\n謝謝你關心。');
+                break;
         }
+        
         
     });
 });
